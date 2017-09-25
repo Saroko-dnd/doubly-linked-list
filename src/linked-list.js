@@ -25,16 +25,27 @@ class LinkedList {
     }
 
     at(index) {
+        return this._findNode(index).data;
+    }
+
+    insertAt(index, data) {
+        let foundNode = this._findNode(index);
+        const newNode = new Node(data, foundNode.prev, foundNode);
+        foundNode.prev.next = newNode;
+        foundNode.prev = newNode;
+    }
+
+    _findNode(index){
         let foundNode = this._head;
         for (; index > 0; --index){
             foundNode = foundNode.next;
         }
-        return foundNode.data;
+        return foundNode;  
     }
 
-    insertAt(index, data) {}
+    isEmpty() {
 
-    isEmpty() {}
+    }
 
     clear() {}
 
