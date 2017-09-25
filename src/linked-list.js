@@ -24,7 +24,13 @@ class LinkedList {
         return (this.length) ? this._tail.data : null;
     }
 
-    at(index) {}
+    at(index) {
+        let foundNode = this._head;
+        for (; index > 0; --index){
+            foundNode = foundNode.next;
+        }
+        return foundNode.data;
+    }
 
     insertAt(index, data) {}
 
