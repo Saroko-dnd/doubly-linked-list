@@ -13,7 +13,10 @@ class LinkedList {
             this._tail = new Node(data);
             this._head = this._tail;
         }
+
         ++this.length;
+
+        return this;
     }
 
     head() {
@@ -44,6 +47,8 @@ class LinkedList {
 
             ++this.length;
         }
+
+        return this;
     }
 
     _findNode(index){
@@ -52,7 +57,7 @@ class LinkedList {
         for (; index > 0; --index){
             foundNode = foundNode.next;
         }
-        
+
         return foundNode;  
     }
 
@@ -64,6 +69,8 @@ class LinkedList {
         this.length = 0;
         this._tail = null;
         this._head = null;
+
+        return this;
     }
 
     deleteAt(index) {
@@ -85,6 +92,8 @@ class LinkedList {
 
             --this.length;  
         }
+
+        return this;
     }
 
     reverse() {
@@ -101,6 +110,8 @@ class LinkedList {
                 nodeFoundFromTail = nodeFoundFromTail.prev;   
             }
         }
+
+        return this;
     }
 
     indexOf(data) {
