@@ -2,7 +2,7 @@ const Node = require('./node');
 
 class LinkedList {
     constructor() {
-        this.length = 0;
+        this.clear();
     }
 
     append(data) {
@@ -47,7 +47,11 @@ class LinkedList {
         return !this.length;
     }
 
-    clear() {}
+    clear() {
+        this.length = 0;
+        this._tail = null;
+        this._head = null;
+    }
 
     deleteAt(index) {}
 
