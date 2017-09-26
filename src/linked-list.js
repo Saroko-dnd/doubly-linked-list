@@ -29,10 +29,16 @@ class LinkedList {
     }
 
     insertAt(index, data) {
-        let foundNode = this._findNode(index);
-        const newNode = new Node(data, foundNode.prev, foundNode);
-        foundNode.prev.next = newNode;
-        foundNode.prev = newNode;
+        if (this.length){
+            let foundNode = this._findNode(index);
+            const newNode = new Node(data, foundNode.prev, foundNode);
+            if (foundNode.prev != null){
+                foundNode.prev.next = newNode;
+            }
+            foundNode.prev = newNode;
+        }else{
+            this.append(data);
+        }
     }
 
     _findNode(index){
@@ -53,7 +59,9 @@ class LinkedList {
         this._head = null;
     }
 
-    deleteAt(index) {}
+    deleteAt(index) {
+        let foundNode = this._findNode(index); 
+    }
 
     reverse() {}
 
