@@ -34,21 +34,25 @@ class LinkedList {
         }else{
             let foundNode = this._findNode(index);
             const newNode = new Node(data, foundNode.prev, foundNode);
+
             if (foundNode.prev){
                 foundNode.prev.next = newNode;
             }else{
                 this._head = newNode;
             }
             foundNode.prev = newNode;
+
             ++this.length;
         }
     }
 
     _findNode(index){
         let foundNode = this._head;
+
         for (; index > 0; --index){
             foundNode = foundNode.next;
         }
+        
         return foundNode;  
     }
 
@@ -67,6 +71,7 @@ class LinkedList {
             this.clear();
         }else{
             let foundNode = this._findNode(index);
+
             if (!foundNode.next){
                 this._tail = this._tail.prev;
                 this._tail.next = null;
@@ -77,6 +82,7 @@ class LinkedList {
                 foundNode.prev.next = foundNode.next;
                 foundNode.next.prev = foundNode.prev;             
             }
+
             --this.length;  
         }
     }
@@ -86,6 +92,7 @@ class LinkedList {
             let nodeFoundFromHead = this._head;
             let nodeFoundFromTail = this._tail;
             let bufferForData = null;
+
             for(let counter = 0; counter < Math.floor(this.length/2); ++counter){
                 bufferForData = nodeFoundFromHead.data;
                 nodeFoundFromHead.data = nodeFoundFromTail.data;
@@ -96,7 +103,22 @@ class LinkedList {
         }
     }
 
-    indexOf(data) {}
+    indexOf(data) {
+        let foundIndex = -1;
+        let bufferForIndex = 0;
+        let BufferForNode = this._head;
+
+        while (BufferForNode && foundIndex === -1) {
+            if (BufferForNode.data === data) {
+                foundIndex = bufferForIndex;
+            }else{
+                ++bufferForIndex;
+                BufferForNode = BufferForNode.next;
+            }
+        }
+
+        return foundIndex;
+    }
 }
 
 module.exports = LinkedList;
