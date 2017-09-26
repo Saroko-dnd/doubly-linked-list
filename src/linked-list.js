@@ -81,7 +81,20 @@ class LinkedList {
         }
     }
 
-    reverse() {}
+    reverse() {
+        if (this.length > 1){
+            let nodeFoundFromHead = this._head;
+            let nodeFoundFromTail = this._tail;
+            let bufferForData = null;
+            for(let counter = 0; counter < Math.floor(this.length/2); ++counter){
+                bufferForData = nodeFoundFromHead.data;
+                nodeFoundFromHead.data = nodeFoundFromTail.data;
+                nodeFoundFromTail.data = bufferForData; 
+                nodeFoundFromHead = nodeFoundFromHead.next;
+                nodeFoundFromTail = nodeFoundFromTail.prev;   
+            }
+        }
+    }
 
     indexOf(data) {}
 }
