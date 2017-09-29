@@ -52,10 +52,16 @@ class LinkedList {
     }
 
     _findNode(index){
-        let foundNode = this._head;
+        let foundNode = (index >= this.length / 2) ? this._tail : this._head;
 
-        for (; index > 0; --index){
-            foundNode = foundNode.next;
+        if (index >= this.length / 2){
+            for (let counterFromTail = this.length - 1 - index; counterFromTail > 0; --counterFromTail){
+                foundNode = foundNode.prev;
+            }
+        }else{
+            for (; index > 0; --index){
+                foundNode = foundNode.next;
+            }
         }
 
         return foundNode;  
